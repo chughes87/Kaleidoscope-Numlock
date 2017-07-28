@@ -22,7 +22,7 @@ void NumLock_::loopHook(bool postClear) {
     for (uint8_t c = 0; c < COLS; c++) {
       Key k = Layer.lookup(r, c);
 
-      if (k.raw < Key_KeypadNumLock.raw || k.raw > Key_KeypadDot.raw)
+      if ((k.raw < Key_KeypadNumLock.raw || k.raw > Key_KeypadDot.raw) && k.raw != HID_KEYBOARD_MINUS_AND_UNDERSCORE && k.raw != HID_KEYBOARD_SEMICOLON_AND_COLON)
         continue;
 
       LEDControl.setCrgbAt(r, c, numpad_color);
